@@ -1,0 +1,46 @@
+/** Imagine that I have my own clothing store.
+For this project, I create a table for all item in the store with columns of item id, item name, quantity, price, ailse
+**/
+CREATE TABLE Clothings(
+    id INTEGER PRIMARY KEY,
+    item TEXT,
+    quantity INTEGER,
+    price REAL,
+    ailse INTEGER
+);
+
+--Insert item information into the table
+INSERT INTO Clothings VALUES (1, "T-Shirt", 50, 12, 1);
+INSERT INTO Clothings VALUES (2, "Pants", 40, 15, 2);
+INSERT INTO Clothings VALUES(3, "Socks", 100, 5, 4);
+INSERT INTO Clothings VALUES(4, "Jackets", 35, 55 , 1);
+INSERT INTO Clothings VALUES(5, "Skirts", 25, 18, 2);
+INSERT INTO Clothings VALUES(6, "Shorts", 45, 17, 2);
+INSERT INTO Clothings VALUES(7, "Leggings", 55, 10, 2);
+INSERT INTO Clothings VALUES(8, "Boots", 22, 55, 4);
+INSERT INTO Clothings VALUES(9, "Jeans", 30, 20, 2);
+INSERT INTO Clothings VALUES(10, "Hoodies", 40, 25, 1);
+INSERT INTO Clothings VALUES(11, "Sweaters", 20, 18, 1);
+INSERT INTO Clothings VALUES(12, "Hats", 40, 11, 3);
+INSERT INTO Clothings VALUES(13, "Shoes", 60, 60, 4);
+INSERT INTO Clothings VALUES(14, "Gloves", 35, 8, 5);
+INSERT INTO Clothings VALUES(15, "Handbags", 28, 35, 5);
+
+--Show table data
+SELECT * FROM Clothings;
+
+--Sort item by price from lowest to highest
+SELECT id, item, price FROM Clothings
+ORDER BY price;
+
+--Show item with price $20 or greater
+SELECT id, item, price FROM Clothings
+WHERE price >= 20;
+
+--show number of items in each ailse
+SELECT COUNT(item), ailse FROM Clothings
+GROUP BY ailse;
+
+--show the total amount (funds/capital) I need to purchase each item
+SELECT item, SUM(quantity*price) AS paid_amount FROM Clothings
+GROUP BY item;
